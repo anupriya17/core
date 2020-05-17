@@ -34,6 +34,7 @@ function plugin(options, imports, register) {
     var cache = imports["vfs.cache"];
     var passport = imports.passport;
     var connect = imports.connect;
+    var compress = connect.getCompress();
     var render = imports["connect.render"];
     var analytics = imports["analytics"];
     
@@ -185,7 +186,7 @@ function plugin(options, imports, register) {
         }
     }, [
         requestTimeout(15 * 60 * 1000),
-        connect.getModule().compress(),
+        compress(),
         function(req, res, next) {
             req.query = {
                 access_token: req.params["access_token"]
@@ -220,7 +221,7 @@ function plugin(options, imports, register) {
         }
     }, [
         requestTimeout(15 * 60 * 1000),
-        connect.getModule().compress(),
+        compress(),
         function(req, res, next) {
             passport.authenticate("bearer", { session: false }, function(err, user) {
                 if (err) return next(err);
@@ -329,7 +330,7 @@ function plugin(options, imports, register) {
             Date.now() > user.lastVfsAccess + VFS_ACTIVITY_WINDOW) {
                 
             analytics.superagent && analytics.superagent
-                .post(options.apiBaseUrl + "/metric/usage/" + req.params.pid + "?access_token=" + req.query.access_token)
+                .post(options.apiBaseUrl + "/metric/usage/" + req.params.pid)
                 .end(function() {});
                 
             user.lastVfsAccess = Date.now();

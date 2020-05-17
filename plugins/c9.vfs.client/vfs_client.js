@@ -104,8 +104,9 @@ define(function(require, exports, module) {
             function connectEngine() {
                 if (auth.accessToken) {
                     eioOptions.query = {
-                        access_token: auth.accessToken
+                        // saccess_token: auth.accessToken
                     };
+                    // eioOptions.headers['Authorization'] = 'Bearer ' + auth.accessToken;
                 }
                 return eio(eioOptions);
             }

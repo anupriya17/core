@@ -17,7 +17,7 @@ define(function(require, exports, module) {
         
         var plugin = new Plugin("Ajax.org", main.consumes);
 
-        var compress = imports.connect.getModule().compress();
+        var compress = imports.connect.getCompress();
         
         cache.registerExtension(function(vfs, callback) {
             var restful = vfs.restful.home;
@@ -26,11 +26,11 @@ define(function(require, exports, module) {
                 var path = unescape(req.uri.pathname);
                 
                 if (req.method == "GET" && path.indexOf("/.c9/cache") === 0) {
-                    compress(req, res, function(err) {
-                        if (err) return next(err);
+                    // compress(req, res, function(err) {
+                        // if (err) return next(err);
                         
                         fetchcache(vfs.vfs, vfs.vfs.env.HOME, vfs.vfsOptions, req, res, next);
-                    });
+                    // });
                 }
                 else
                     restful(req, res, next);

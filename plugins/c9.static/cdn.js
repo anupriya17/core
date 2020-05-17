@@ -12,6 +12,7 @@ module.exports = main;
 
 function main(options, imports, register) {
     var connect = imports.connect;
+    var compress = connect.getCompress();
     var build = imports["cdn.build"];
     var connectStatic = imports["connect.static"];
     
@@ -152,7 +153,7 @@ function main(options, imports, register) {
     
     // section.use(foreverCache());
     section.use(imports["connect.cors"].cors("*"));
-    section.use(connect.getModule().compress());
+    section.use(compress());
     
     section.get("/~/:transform/:path*", [prepare, function(req, res, next) {
         transform.sendFile(req, res, next);

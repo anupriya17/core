@@ -16,20 +16,20 @@ define(function(require, exports, module) {
         
         var plugin = new Plugin("Ajax.org", main.consumes);
 
-        var compress = imports.connect.getModule().compress();
+        var compress = imports.connect.getCompress();
         
         cache.registerExtension(function(vfs, callback) {
             var restful = vfs.restful.home;
             
             vfs.restful.home = function(req, res, next) {
                 var path = unescape(req.uri.pathname);
-                
+
                 if (req.method == "GET" && path == "/.c9/file.listing") {
-                    compress(req, res, function(err) {
-                        if (err) return next(err);
+                    // compress(req, res, function(err) {
+                        // if (err) return next(err);
                         
                         filelist(vfs.vfs, vfs.workspaceDir, vfs.vfsOptions, req, res, next);
-                    });
+                    // });
                 }
                 else
                     restful(req, res, next);
@@ -69,7 +69,7 @@ define(function(require, exports, module) {
                 var process = meta.process;
                 // once we receive data on stdout pipe it to the response        
                 process.stdout.once("data", function (data) {
-                    if (res.headerSent)
+                    if (res.headersSent)
                         return;
                         
                     res.writeHead(200, { "Content-Type": "text/plain" });
@@ -87,7 +87,7 @@ define(function(require, exports, module) {
                 });
                 
                 process.on("exit", function(code, signal) {
-                    if (res.headerSent)
+                    if (res.headersSent)
                         return;
                         
                     var err;

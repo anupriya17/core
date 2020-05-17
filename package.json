@@ -7,10 +7,10 @@
     "main": "bin/c9",
     "repository": {
         "type": "git",
-        "url": "http://github.com/sandeepone/core.git"
+        "url": "http://github.com/idec9/core.git"
     },
     "dependencies": {
-        "acorn": "7.1.0",
+        "acorn": "~7.1.1",
         "async": "^1.0.0",
         "base64id": "~2.0.0",
         "connect": "~3.7.0",
@@ -47,7 +47,7 @@
         "form-data": "~1.0.0",
         "chai": "~4.2.0",
         "limiter": "^1.1.0",
-        "mocha": "7.0.1"
+        "mocha": "~7.1.2"
     },
     "scripts": {
         "start": "node server.js"

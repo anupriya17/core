@@ -359,7 +359,8 @@ function getSettings(configName, options) {
     options.options.settings = settings;
     options.options.configName = configName;
     options.options.manifest = {
-        version: options.options.manifest.version
+        version: options.options.manifest.version,
+        revision: options.options.manifest.revision
     };
     return options.options;
 }

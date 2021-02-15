@@ -49,7 +49,7 @@ resetColor=$'\e[0m'
 # FORCE=
 
 updateNodeModules() {
-    echo "${magenta}--- Running npm install --------------------------------------------${resetColor}"
+    echo "${magenta}--- Running yarn install --------------------------------------------${resetColor}"
     "$NPM" install --production
     
     for i in $(git show HEAD:node_modules/); do
@@ -73,7 +73,7 @@ updateCore() {
     cp './scripts/.#install-sdk-tmp.sh' ./scripts/install-sdk.sh
     git checkout -- ./scripts/install-sdk.sh
 
-    git remote add c9 https://github.com/c9/core 2> /dev/null || true
+    git remote add c9 https://github.com/idec9/core 2> /dev/null || true
     git fetch c9
     git merge c9/master --ff-only || \
         echo "${yellow}Couldn't automatically update sdk core ${resetColor}"
@@ -83,25 +83,26 @@ updateCore() {
 
 installGlobalDeps() {
     if ! [[ -f ~/.c9/installed ]]; then
-        if [[ $os == "windows" ]]; then
-            URL=https://raw.githubusercontent.com/cloud9ide/sdk-deps-win32
-        else
-            URL=https://raw.githubusercontent.com/c9/install
-        fi    
-        $DOWNLOAD $URL/master/install.sh | bash
+     #   if [[ $os == "windows" ]]; then
+     #       URL=https://raw.githubusercontent.com/cloud9ide/sdk-deps-win32
+     #   else
+     #       URL=https://raw.githubusercontent.com/c9/install
+     #   fi    
+     #   $DOWNLOAD $URL/master/install.sh | bash
+        bash ./scripts/base.sh
     fi
 }
 
 ############################################################################
 export C9_DIR="$HOME"/.c9
-if ! [[ $(which npm) ]]; then
+if ! [[ $(which yarn) ]]; then
     if [[ $os == "windows" ]]; then
         export PATH="$C9_DIR:$C9_DIR/node_modules/.bin:$PATH"
     else
         export PATH="$C9_DIR/node/bin:$C9_DIR/node_modules/.bin:$PATH"
     fi
 fi
-NPM=npm
+NPM=yarn
 NODE=node
 
 # cleanup build cache since c9.static doesn't do this automatically yet

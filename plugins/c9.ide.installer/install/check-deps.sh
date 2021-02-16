@@ -62,14 +62,14 @@ check_deps() {
     fi
   fi
   
-  if which python2.7 &> /dev/null; then
+  if which python2 &> /dev/null; then
     PYTHONVERSION="2.7"
   else
     PYTHONVERSION=`python --version 2>&1`
   fi
   
-  if [[ $PYTHONVERSION != *2.7* ]]; then
-    echo "Python version 2.7 is required to install pty.js. Please install python 2.7 and try again. You can find more information on how to install Python in the docs: https://docs.c9.io/ssh_workspaces.html"
+  if [[ $PYTHONVERSION != *3.8* ]]; then
+    echo "Python version 3.8 is required to install pty.js. Please install python 3 and try again. You can find more information on how to install Python in the docs: https://docs.c9.io/ssh_workspaces.html"
     MISSING=1
   fi
   

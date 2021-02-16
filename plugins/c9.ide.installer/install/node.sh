@@ -19,24 +19,30 @@ NPM="$C9_DIR/node/bin/npm"
 cd "$C9_DIR"
 
 download_virtualenv() {
-  VIRTUALENV_VERSION="virtualenv-12.0.7"
-  $DOWNLOAD "https://pypi.python.org/packages/source/v/virtualenv/$VIRTUALENV_VERSION.tar.gz"
+  VIRTUALENV_VERSION="virtualenv-20.0.21"
+  DOWNLOAD "https://pypi.python.org/packages/source/v/virtualenv/$VIRTUALENV_VERSION.tar.gz" $VIRTUALENV_VERSION.tar.gz
   tar xzf $VIRTUALENV_VERSION.tar.gz
   rm $VIRTUALENV_VERSION.tar.gz
   mv $VIRTUALENV_VERSION virtualenv
+
+#  VIRTUALENV_VERSION="virtualenv-12.0.7"
+#  $DOWNLOAD "https://pypi.python.org/packages/source/v/virtualenv/$VIRTUALENV_VERSION.tar.gz"
+#  tar xzf $VIRTUALENV_VERSION.tar.gz
+#  rm $VIRTUALENV_VERSION.tar.gz
+#  mv $VIRTUALENV_VERSION virtualenv
 }
 
 check_python() {
-  if which python2.7 &> /dev/null; then
+  if which python2 &> /dev/null; then
     PYTHONVERSION="2.7"
-    PYTHON="python2.7"
+    PYTHON="python2"
   else
     PYTHONVERSION=`python --version 2>&1`
     PYTHON=python
   fi
   
-  if [[ $PYTHONVERSION != *2.7* ]]; then
-    echo "Python version 2.7 is required to install pty.js. Please install python 2.7 and try again. You can find more information on how to install Python in the docs: https://docs.c9.io/ssh_workspaces.html"
+  if [[ $PYTHONVERSION != *3.8* ]]; then
+    echo "Python version 3.8 is required to install pty.js. Please install python 3.8 and try again. You can find more information on how to install Python in the docs: https://docs.c9.io/ssh_workspaces.html"
     exit 100
   fi
 }
@@ -52,15 +58,17 @@ configure_python() {
     installed=
     if has virtualenv; then
       # try global virtualenv first
-      (virtualenv -p python2.7  "$C9_DIR/python") && installed=1
+      (virtualenv -p python3  "$C9_DIR/python") && installed=1
     fi
     
     if ! [ "$installed" ]; then
       download_virtualenv
-      "$PYTHON" virtualenv/virtualenv.py -p python2.7 "$C9_DIR/python"
+      # "$PYTHON" virtualenv/virtualenv.py -p python2.7 "$C9_DIR/python"
+      "$PYTHON" virtualenv/virtualenv.py "$C9_DIR/python"
     fi
-    if [[ -f "$C9_DIR/python/bin/python2" ]]; then
-      PYTHON="$C9_DIR/python/bin/python2"
+
+    if [[ -f "$C9_DIR/python/bin/python3" ]]; then
+      PYTHON="$C9_DIR/python/bin/python3"
     else
       echo "Unable to setup virtualenv"
       exit 1

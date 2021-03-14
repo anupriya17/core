@@ -36,7 +36,7 @@ if [ ! -d "$C9_DIR" ]; then
 fi
 
 VERSION=1
-NODE_VERSION=v14.4.0
+NODE_VERSION=v14.15.5
 #NODE_VERSION_ARM_PI=v0.10.28
 NPM=$C9_DIR/node/bin/npm
 YARN=yarn
@@ -165,8 +165,7 @@ start() {
 
     "base" )
       echo "Installing base packages. Use --help for more options"
-      start install node tmux_install nak ptyjs collab
-    #   start install collab
+      # start install node tmux_install nak ptyjs collab
       echo "DONE BASE"
       echo ""
     ;;
@@ -278,9 +277,14 @@ node(){
 
   echo :Installing Node $NODE_VERSION
 
-  DOWNLOAD https://nodejs.org/dist/"$NODE_VERSION/node-$NODE_VERSION-$1-$2.tar.gz" node.tar.gz
+  # https://unofficial-builds.nodejs.org/download/release/v14.15.5/node-v14.15.5-linux-x64-musl.tar.gz
+  DOWNLOAD https://unofficial-builds.nodejs.org/download/release/"$NODE_VERSION/node-$NODE_VERSION-$1-$2-musl.tar.gz" node.tar.gz
+  
+  # DOWNLOAD https://nodejs.org/dist/"$NODE_VERSION/node-$NODE_VERSION-$1-$2.tar.gz" node.tar.gz
+  
   tar xzf node.tar.gz
-  mv "node-$NODE_VERSION-$1-$2" node
+  mv "node-$NODE_VERSION-$1-$2-musl" node
+  # mv "node-$NODE_VERSION-$1-$2" node
   rm -f node.tar.gz
 
   # use local npm cache

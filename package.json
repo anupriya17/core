@@ -10,7 +10,7 @@
         "url": "http://github.com/idec9/core.git"
     },
     "dependencies": {
-        "acorn": "~7.1.1",
+        "acorn": "~8.0.5",
         "async": "^1.0.0",
         "base64id": "~2.0.0",
         "body-parser": "~1.19.0",
@@ -34,7 +34,7 @@
         "msgpack-js-browser": "~0.1.4",
         "nak": "git+https://github.com/astro-friedel/nak.git",
         "netutil": "~0.0.2",
-        "node-pty-prebuilt-multiarch": "^0.10.0",
+        "node-pty-prebuilt-multiarch": "^0.10.1-pre.3",
         "optimist": "~0.6.0",
         "qs": "6.9.0",
         "read": "~1.0.5",
@@ -48,7 +48,7 @@
         "through": "2.3.8",
         "tmp": "~0.1.0",
         "uglify-js": "~3.6.0",
-        "ws": "7.2.1"
+        "ws": "7.3.1"
     },
     "scripts": {
         "start": "node server.js"

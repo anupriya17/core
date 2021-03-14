@@ -71,7 +71,7 @@ module.exports = function(manifest, installPath) {
         homeUrl: "/home",
         collab: false,
         installed: true,
-        packed: false,
+        packed: true,
         packedThemes: true,
         readonly: false,
         role: "a",

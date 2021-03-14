@@ -10,15 +10,10 @@ accepts@~1.3.4, accepts@~1.3.5:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
-acorn@>=0.5.0:
+acorn@>=0.5.0, acorn@~8.0.5:
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.0.5.tgz#a3bfb872a74a6a7f661bc81b9849d9cac12601b7"
   integrity sha512-v+DieK/HJkJOpFBETDJioequtc3PfxsWMaxIdIwujtF7FEV/MAyDQLlm6/zPvr7Mix07mLh6ccVwIsloceodlg==
-
-acorn@~7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.1.tgz#e35668de0b402f359de515c5482a1ab9f89a69bf"
-  integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
 
 after@0.8.2:
   version "0.8.2"
@@ -1327,10 +1322,10 @@ node-abi@^2.7.0:
   dependencies:
     semver "^5.4.1"
 
-node-pty-prebuilt-multiarch@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/node-pty-prebuilt-multiarch/-/node-pty-prebuilt-multiarch-0.10.0.tgz#0126dcfd38c9d312d06ed8beff3b1ff51ba11c53"
-  integrity sha512-l1Oq8EjrAYXhA/XRb2V2+LZa2cRM5sjvzK8kXehPVszgEmpfgNHjNUddaWP9qOAVTvDiLCqrJC2tC2Zz0hUv/w==
+node-pty-prebuilt-multiarch@^0.10.1-pre.3:
+  version "0.10.1-pre.3"
+  resolved "https://registry.yarnpkg.com/node-pty-prebuilt-multiarch/-/node-pty-prebuilt-multiarch-0.10.1-pre.3.tgz#83cff840d9766b431c2b3b35ef176cf25eb81e2c"
+  integrity sha512-2IFS67xuhuVzIm46Ys2WLB3HG65EhxWECFfHkUbX2AFh3bXNsMdQiKAY1PTXf/nl45/EbMC2whc6BU8P99y7bg==
   dependencies:
     nan "^2.14.2"
     prebuild-install "^6.0.0"
@@ -2029,10 +2024,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-ws@7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.2.1.tgz#03ed52423cd744084b2cf42ed197c8b65a936b8e"
-  integrity sha512-sucePNSafamSKoOqoNfBd8V0StlkzJKL2ZAhGQinCfNQ+oacw+Pk7lcdAElecBF2VkLNZRiIb5Oi1Q5lVUVt2A==
+ws@7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
+  integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
 
 ws@~6.1.0:
   version "6.1.4"

@@ -256,7 +256,7 @@ define(function(require, exports, module) {
                     ["enterCompletion", true]
                 ]);
                 settings.setDefaults("project/language", [
-                    ["warnLevel", "info"],
+                    ["warnLevel", "error"],
                     ["undeclaredVars", true],
                     ["eslintrc", true],
                     ["semi", true],
